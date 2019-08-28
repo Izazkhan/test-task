@@ -37,6 +37,7 @@ class OrderDetailRepositoryEloquent extends BaseRepository implements OrderDetai
 
     public function getOrderDetails($id)
     {
+        // return order detaiuls
         return ($this->model->with(['product','order.customer'])->where(
             $this->model()::ATTR_ORDER_NUMBER,$id
         )->get());

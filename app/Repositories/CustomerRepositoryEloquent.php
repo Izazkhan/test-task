@@ -49,17 +49,21 @@ class CustomerRepositoryEloquent extends BaseRepository implements CustomerRepos
 
     public function limitCustomers($limit = 10)
     {
+        // initial customers list
         $customers = $this->model->orderBy($this->model::ATTR_CUSTOMER_NAME)->limit($limit)->get();
+        // to know total customers
         $totalCustomesCount = $this->model->count('*');
         return ['totalCount'=>$totalCustomesCount,'limited' => $customers];
     }
 
     public function customersAjax($data = [])
     {
+        // default arguments will be considered if not provided
         $default = ['limit' => 10,'start' => 0,'order' => 0,'dir' => 'asc','search' => ''];
         $data = array_merge($default,$data);
         extract($data);
 
+        // these fields are searchable in customer table
         $searchable = [
             $this->model()::ATTR_KEY,
             $this->model::ATTR_CUSTOMER_NAME,
@@ -74,11 +78,13 @@ class CustomerRepositoryEloquent extends BaseRepository implements CustomerRepos
             $this->model::ATTR_STATE
         ];
 
+        // we need concatination of these fileds in order to print it correctly in DataTable
         $firstName = $this->model::ATTR_CONTACT_FIRST_NAME;
         $lastName = $this->model::ATTR_CONTACT_LAST_NAME;
         $firstAddress = $this->model::ATTR_ADDRESS_FIRST;
         $lastAddress = $this->model::ATTR_ADDRESS_LAST;
 
+        // Fields fr Select Statment
         $select = [
             $this->model::ATTR_KEY,
             $this->model::ATTR_CUSTOMER_NAME,
@@ -99,8 +105,8 @@ class CustomerRepositoryEloquent extends BaseRepository implements CustomerRepos
             }
         })
         ->orderBy($searchable[$order],$dir)
-        ->get($select);
-        
+        ->select($select)
+        ->get();
         $data = ['total' => count($customers),'filtered' =>$customers->slice($start,$limit)];
 
         return $data;

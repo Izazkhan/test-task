@@ -48,10 +48,12 @@ class OrderRepositoryEloquent extends BaseRepository implements OrderRepository
 
     public function getOrdersAjax($data)
     {
+        // default arguments if not provided these will be considered
         $default = ['limit' => 10,'start' => 0,'order' => 0,'dir' => 'asc','search' => ''];
         $data = array_merge($default,$data);
         extract($data);
 
+        // fields of orders model / entity
         $searchable = [
             $this->model::ATTR_KEY,
             $this->model::ATTR_CUSTOMER_NUMBER,
@@ -62,6 +64,7 @@ class OrderRepositoryEloquent extends BaseRepository implements OrderRepository
             $this->model::ATTR_COMMENT,
         ];
 
+        // get data for orders
         $orders = $this->model->where(function($q) use ($limit,$start,$search,$order,$dir,$searchable){
             if ($search != '') {
                 foreach ($searchable as $field) {

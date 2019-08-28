@@ -74,12 +74,15 @@ class CustomerController extends Controller
 
     public function customerOrders(Request $request)
     {
+        // get customer
         $customer = $this->repository->model()::where(
             $this->repository->model()::ATTR_KEY,$request->id
         )->first();
+        // if customer is not avaialble
         if (!$customer) {
             return redirect('/customers')->with(['error' => 'Customer does not exists']);
         }
+        // get order of clients, from Order Model using CustomerNumber
         $orders = $this->orderRepository->ordersOfClient($request->id);
         if (!count($orders))
             return redirect('/customers')->with(['error' => 'No orders found.']);
@@ -90,7 +93,9 @@ class CustomerController extends Controller
     {
         $this->validate($request,['customer_name'=>'required','first_name'=>'required','last_name'=>'required','phone'=>'required','address1'=>'required','country'=>'required','city' => 'required','post_code' => 'max:5']);
         
+        // Create new customer object
         $customer = new Customer();
+        // get maximum customer number to avoid repeatition thats why we did not passed it manually
         $customerNumber = Customer::max($customer::ATTR_KEY)+1;
         $customer->{$customer::ATTR_KEY} = $customerNumber;
         $customer->{$customer::ATTR_CUSTOMER_NAME} = $request->customer_name;

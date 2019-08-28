@@ -30,16 +30,17 @@ class OrderController extends Controller
 
     public function orderDetails(Request $request)
     {
+        // if order id is missing from request return erorr message and redirect
         if (!isset($request->id)) {
             return redirect('/orders')->with(['error' => 'Order number is missing.']);
         }
-
+        // get order details by orderNumber
         $orderDetails = $this->orderDetailRepository->getOrderDetails($request->id);
         if (!count($orderDetails)) {
             return redirect('/orders')->with(['error' => 'No Order Details.']);
         }
 
         // dd($orderDetails->first());
-        return view('orders-details',['orderDetails'=>$orderDetails,'orderNumber' => $orderDetails->first()->orderNumber]);
+        return view('orders-details',['orderDetails'=>$orderDetails,'orderNumber' => $request->id]);
     }
 }
