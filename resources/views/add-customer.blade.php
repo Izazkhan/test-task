@@ -62,32 +62,32 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label>Customer Name</label>
-                <input type="text" name="customer_name" class="form-control" required>
+                <input type="text" name="customer_name" class="form-control" value="{{ old('customer_name') }}" required>
               </div>
 
               <div class="form-group">
                 <label>Contact First Name</label>
-                <input type="text" name="first_name" class="form-control" required>
+                <input type="text" name="first_name" class="form-control" value="{{ old('first_name') }}" required>
               </div>
 
               <div class="form-group">
                 <label>Contact Last Name</label>
-                <input type="text" name="last_name" class="form-control" required>
+                <input type="text" name="last_name" class="form-control" value="{{ old('last_name') }}" required>
               </div>
 
               <div class="form-group">
                 <label>Phone #</label>
-                <input type="number" name="phone" class="form-control" required>
+                <input type="number" name="phone" class="form-control" value="{{ old('phone') }}" required>
               </div>
 
               <div class="form-group">
                 <label>Address Line 1</label>
-                <input type="text" name="address1" class="form-control" required>
+                <input type="text" name="address1" class="form-control" value="{{ old('address1') }}" required>
               </div>
 
               <div class="form-group">
                 <label>Address Line 2</label>
-                <input type="text" name="address2" class="form-control">
+                <input type="text" name="address2" class="form-control" value="{{ old('address2') }}">
               </div>
               <!-- /.form-group -->
             </div>
@@ -135,12 +135,12 @@
               <!-- /.form-group -->
               <div class="form-group">
                 <label>Postal code</label>
-                <input type="text" name="post_code" class="form-control">
+                <input type="text" name="post_code" class="form-control" value="{{ old('post_code') }}">
               </div>
 
               <div class="form-group">
                 <label>Credit Limit</label>
-                <input type="number" name="credit_limit" class="form-control">
+                <input type="number" name="credit_limit" class="form-control" value="{{ old('credit_limit') }}">
               </div>
 
               <div class="form-group">
