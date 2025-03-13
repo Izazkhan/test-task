@@ -9,10 +9,9 @@ class Category
      * Get all categories
      * 
      * @return array
-     */ 
+     */
     public static function getAll()
     {
-        // join with courses
         $query = "WITH RECURSIVE category_tree AS (
                 SELECT id, parent_id, id AS root_id, name
                 FROM categories
@@ -42,8 +41,10 @@ class Category
      */
     public static function getCategoriesIds()
     {
-        // join with courses
-        $query = "SELECT c.id AS category_id FROM categories c where c.parent_id is null";
+        $query = "SELECT c.id AS category_id
+                FROM categories c
+                WHERE c.parent_id IS NULL
+        ";
         $stmt = Database::getInstance()->getConnection()->query($query);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }

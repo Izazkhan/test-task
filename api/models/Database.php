@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Database class
+ */
 class Database
 {
     private static $instance = null;
@@ -7,7 +10,7 @@ class Database
 
     private function __construct()
     {
-        $host = 'db'; 
+        $host = 'db';
         $db = 'course_catalog';
         $user = 'test_user';
         $pass = 'test_password';
@@ -35,6 +38,11 @@ class Database
         return self::$instance;
     }
 
+    /**
+     * Get the database connection
+     *
+     * @return PDO
+     */
     public function getConnection()
     {
         return $this->connection;
