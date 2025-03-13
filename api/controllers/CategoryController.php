@@ -1,6 +1,9 @@
 <?php
 require_once 'models/Category.php';
 
+/**
+ * Category controller
+ */
 class CategoryController
 {
     /**

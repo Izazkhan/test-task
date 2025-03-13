@@ -2,6 +2,9 @@
 // CourseController.php
 require_once 'models/Course.php';
 
+/**
+ * Course controller
+ */
 class CourseController {
     /**
      * Get all courses
@@ -49,7 +52,7 @@ class CourseController {
     public function getCourseByCategory($id) {
         try {
             // Logic for fetching course by ID
-            $course = Course::getByCategoryAndItsSubCategories($id);
+            $course = Course::getByCategoryId($id);
             return jsonResponse($course);
         } catch (\Exception $e) {
             return jsonResponse([

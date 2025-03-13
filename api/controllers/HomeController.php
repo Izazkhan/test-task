@@ -3,6 +3,9 @@
 require_once 'models/Category.php';
 require_once 'models/Course.php';
 
+/**
+ * Home controller
+ */
 class HomeController
 {
     /**

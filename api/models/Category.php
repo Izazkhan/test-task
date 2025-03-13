@@ -2,6 +2,9 @@
 
 require_once 'Database.php';
 
+/**
+ * Category model
+ */
 class Category
 {
 
@@ -12,7 +15,8 @@ class Category
      */
     public static function getAll()
     {
-        $query = "WITH RECURSIVE category_tree AS (
+        $query =
+            "WITH RECURSIVE category_tree AS (
                 SELECT id, parent_id, id AS root_id, name
                 FROM categories
                 UNION
@@ -28,8 +32,7 @@ class Category
                     SELECT id FROM category_tree WHERE root_id = c.id
                 )) AS count_of_courses
             FROM categories c
-            ORDER BY c.name
-        ";
+            ORDER BY c.name";
         $stmt = Database::getInstance()->getConnection()->query($query);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
