@@ -5,7 +5,7 @@ require 'routes.php';
 require 'helpers.php';
 // Set the response header to application/json
 header("Content-Type: application/json");
-header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Origin: http://cc.localhost");
 // Capture the request method and URI
 $method = $_SERVER['REQUEST_METHOD'];
 $uri = $_SERVER['REQUEST_URI'];

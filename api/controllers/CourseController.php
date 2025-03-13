@@ -4,20 +4,41 @@ require_once 'models/Course.php';
 
 class CourseController {
     public function getCourses() {
-        // Logic for fetching course by ID
-        $courses = Course::all();
-        return jsonResponse($courses, 200);
+        try {
+            // Logic for fetching course by ID
+            $courses = Course::all();
+            return jsonResponse($courses, 200);
+        } catch (\Exception $e) {
+            return jsonResponse([
+                'message' => 'Internal Server Error',
+                'error' => $e->getMessage()
+            ], 500);
+        }
     }
     
     public function getCourseById($id) {
-        // Logic for fetching course by ID
-        $course = Course::find($id);
-        return jsonResponse($course);
+        try {
+            // Logic for fetching course by ID
+            $course = Course::find($id);
+            return jsonResponse($course);
+        } catch (\Exception $e) {
+            return jsonResponse([
+                'message' => 'Internal Server Error',
+                'error' => $e->getMessage()
+            ], 500);
+        }
     }
     
     public function getCourseByCategory($id) {
-        // Logic for fetching course by ID
-        $course = Course::getByCategory($id);
-        return jsonResponse($course);
+        try {
+            // Logic for fetching course by ID
+            $course = Course::getAllByCategoryIds([$id]);
+            return jsonResponse($course);
+        } catch (\Exception $e) {
+            return jsonResponse([
+                'message' => 'Internal Server Error',
+                'error' => $e->getMessage()
+            ], 500);
+        }
     }
 }
