@@ -104,7 +104,7 @@ git checkout master
 ```
 
 ## Performance of queries
-
+I've executed EXPLAIN on the queries in this test task, and the performance was efficient, achieving O(n) complexity.
 
 ## Conclusion  
 This project demonstrates a clean and efficient approach to building a fullstack application with a focus on structured URLs, RESTful APIs, and optimized database queries. The architecture is built using OOP concepts, ensuring readability and maintainability. 
