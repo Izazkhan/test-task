@@ -49,7 +49,7 @@ class CourseController {
     public function getCourseByCategory($id) {
         try {
             // Logic for fetching course by ID
-            $course = Course::getAllByCategoryIds([$id]);
+            $course = Course::getByCategoryAndItsSubCategories($id);
             return jsonResponse($course);
         } catch (\Exception $e) {
             return jsonResponse([
