@@ -5,6 +5,11 @@ require_once 'models/Course.php';
 
 class HomeController
 {
+    /**
+     * Get all categories with courses
+     * 
+     * @return array
+     */
     public function getCategoriesWithCourses()
     {
         try {

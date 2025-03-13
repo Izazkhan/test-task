@@ -6,7 +6,12 @@ class Course
 {
     public function __construct() {}
 
-    // Static Method to Find Course by ID
+    /**
+     * Get a course by ID
+     * 
+     * @param int $id
+     * @return array|null
+     */
     public static function find($id)
     {
         $stmt = Database::getInstance()->getConnection()->prepare("
@@ -31,12 +36,23 @@ class Course
         return $row ?: null; // Return null if no course is found
     }
 
+    /**
+     * Get all courses
+     * 
+     * @return array
+     */
     public static function all()
     {
         $stmt = Database::getInstance()->getConnection()->query("SELECT * FROM courses");
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    /**
+     * Get all courses by category ids
+     * 
+     * @param array $categoryIds
+     * @return array
+     */
     public static function getAllByCategoryIds($categoryIds)
     {
         if (empty($categoryIds)) {

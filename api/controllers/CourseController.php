@@ -3,6 +3,11 @@
 require_once 'models/Course.php';
 
 class CourseController {
+    /**
+     * Get all courses
+     * 
+     * @return array
+     */
     public function getCourses() {
         try {
             // Logic for fetching course by ID
@@ -16,6 +21,12 @@ class CourseController {
         }
     }
     
+    /**
+     * Get a course by ID
+     * 
+     * @param int $id
+     * @return array|null
+     */
     public function getCourseById($id) {
         try {
             // Logic for fetching course by ID
@@ -29,6 +40,12 @@ class CourseController {
         }
     }
     
+    /**
+     * Get courses by category ID
+     * 
+     * @param int $id
+     * @return array
+     */
     public function getCourseByCategory($id) {
         try {
             // Logic for fetching course by ID

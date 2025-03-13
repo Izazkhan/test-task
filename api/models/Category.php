@@ -5,6 +5,11 @@ require_once 'Database.php';
 class Category
 {
 
+    /**
+     * Get all categories
+     * 
+     * @return array
+     */ 
     public static function getAll()
     {
         // join with courses
@@ -29,7 +34,12 @@ class Category
         $stmt = Database::getInstance()->getConnection()->query($query);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-    
+
+    /**
+     * Get all categories ids
+     * 
+     * @return array
+     */
     public static function getCategoriesIds()
     {
         // join with courses
@@ -38,6 +48,12 @@ class Category
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    /**
+     * Get a category by ID
+     * 
+     * @param int $id
+     * @return array|null
+     */
     public static function find($id)
     {
         $query = "WITH RECURSIVE category_tree AS (

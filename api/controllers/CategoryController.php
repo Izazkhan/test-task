@@ -3,6 +3,11 @@ require_once 'models/Category.php';
 
 class CategoryController
 {
+    /**
+     * Get all categories
+     * 
+     * @return array
+     */
     public function getAll()
     {
         try {
@@ -15,6 +20,12 @@ class CategoryController
         }
     }
 
+    /**
+     * Get a category by ID
+     * 
+     * @param int $id
+     * @return array|null
+     */
     public function getById($id)
     {
         try {
