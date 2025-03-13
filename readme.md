@@ -94,7 +94,7 @@ I assumed that **since we are showing counts for child category courses**, we mi
 - **To test this behavior**, run:
 
 ```bash
-git checkout 8028c221ef56257b95cd73f7233b7c57c7fe5c21
+git checkout 6f6e03532a1737849c701e744db3df85d6be19f0
 ```
 
 - **To revert to the default behavior (only displaying courses for the selected category)**, run:
@@ -102,6 +102,9 @@ git checkout 8028c221ef56257b95cd73f7233b7c57c7fe5c21
 ```bash
 git checkout master
 ```
+
+## Performance of queries
+
 
 ## Conclusion  
 This project demonstrates a clean and efficient approach to building a fullstack application with a focus on structured URLs, RESTful APIs, and optimized database queries. The architecture is built using OOP concepts, ensuring readability and maintainability. 
